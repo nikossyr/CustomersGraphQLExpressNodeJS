@@ -1,13 +1,5 @@
+const axios = require('axios');
 const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNUll} = require('graphql');
-
-// Hardcoded Data
-const customers = [
-    {id: '1', name: 'John Doe', email: 'jdoe@email.com', age: 35},
-    {id: '2', name: 'Steve Smith', email: 'ssmith@email.com', age: 25},
-    {id: '3', name: 'Sara Manning', email: 'smanning@email.com', age: 27},
-    {id: '4', name: 'Jonas Done', email: 'jdone@email.com', age: 34},
-    {id: '4', name: 'Jonny Pappas', email: 'jpappas@email.com', age: 19},
-];
 
 // Customer Type
 const CustomerType = new GraphQLObjectType({
@@ -30,7 +22,8 @@ const rootQuery = new GraphQLObjectType({
                 id: {type: GraphQLString}
             },
             resolve(parentValue, args) {
-                return customers.find(customer => customer.id === args.id)
+                return axios.get(`http://localhost:3000/customers/${args.id}`)
+                    .then(res => res.data);
             }
         },
         customers: {
@@ -39,7 +32,9 @@ const rootQuery = new GraphQLObjectType({
                 name: {type: GraphQLString}
             },
             resolve(parentValue, args) {
-                return customers.filter(customer => customer.name.toLowerCase().includes(args.name.toLowerCase()));
+                return axios.get(`http://localhost:3000/customers`)
+                    .then(res => res.data
+                        .filter(customer => customer.name.toLowerCase().includes(args.name.toLowerCase())))
             }
         }
     }

@@ -1,0 +1,34 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "jdoe@email.com",
+      "age": 35
+    },
+    {
+      "id": "2",
+      "name": "Steve Smith",
+      "email": "ssmith@email.com",
+      "age": 25
+    },
+    {
+      "id": "3",
+      "name": "Sara Manning",
+      "email": "smanning@email.com",
+      "age": 27
+    },
+    {
+      "id": "4",
+      "name": "Jonas Done",
+      "email": "jdone@email.com",
+      "age": 34
+    },
+    {
+      "id": "5",
+      "name": "Jonny Pappas",
+      "email": "jpappas@email.com",
+      "age": 19
+    }
+  ]
+}
