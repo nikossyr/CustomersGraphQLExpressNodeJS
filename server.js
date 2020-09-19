@@ -1,12 +1,13 @@
 const express = require('express');
 const colors = require('colors');
 const {graphqlHTTP} = require('express-graphql');
+const schema = require('./schema')
 
 const app = express();
 
 app.use('/graphql', graphqlHTTP({
-        // schema,
-        graphicl: true
+        schema,
+        graphiql: true,
     })
 );
 
